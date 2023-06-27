@@ -1,0 +1,71 @@
+class Sol
+{
+     static Node add(Node n, int d){
+        
+        Node tem = n;
+        Node newNode = new Node(d);
+        if(n == null)
+        return newNode;
+        
+        while(tem.next != null){
+           
+            if(tem.data == d)
+            return n;
+            else if(tem.data > d){
+             newNode.next = tem;
+             return newNode;
+            }
+            else if(tem.next.data > d){
+                newNode.next = tem.next;
+                tem.next = newNode;
+                return n;
+            }
+            else{
+                tem = tem.next;
+            }
+        }
+        
+        if(tem.data > d){
+            newNode.next = tem;
+            return newNode;
+        }
+        else if(tem.data == d)
+        {
+            return n;
+        }
+        else{
+            tem.next = newNode;
+            return n;
+        }
+        
+    }
+	public static Node findUnion(Node head1,Node head2)
+	{
+	    Node fin = new Node(head1.data);
+	    Node t1,t2;
+	    t1 = head1;
+	    t2 = head2;
+	    while(t1 != null && t2 != null){
+	        if(t1.data < t2.data){
+	           fin = add(fin,t1.data);
+	            t1 = t1.next;
+	        }
+	        else{
+	           fin = add(fin,t2.data);
+	            t2 = t2.next;
+	        }
+	        
+	    }
+	    
+	    while(t1 != null){
+	       fin = add(fin,t1.data);
+	        t1 = t1.next;
+	    }
+	    while(t2 != null){
+	       fin = add(fin,t2.data);
+	        t2 = t2.next;
+	    }
+	    
+	    return fin;
+	}
+}
