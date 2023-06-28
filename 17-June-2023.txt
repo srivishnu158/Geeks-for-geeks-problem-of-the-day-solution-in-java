@@ -1,0 +1,24 @@
+class Geeks{
+    
+    
+    static void insert(Queue<Integer> q, int k){
+        
+        q.add(k);
+        
+    }
+    
+   
+    static int findFrequency(Queue<Integer> q, int k){
+        
+        Queue<Integer> q2 = q;
+        int count = 0;
+       
+        for(Integer it : q2){
+            if(it == k)
+            count++;
+        }
+        
+        return count;
+    }
+    
+}
