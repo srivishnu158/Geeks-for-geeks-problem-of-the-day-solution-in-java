@@ -1,0 +1,8 @@
+class Solution {
+    static int sumOfNaturals(int n) {
+        int max = 1000000007;
+        long val = (long)n * (long)(n+1);
+        long temp = val/2;
+        return (int)(temp % max);
+    }
+}
