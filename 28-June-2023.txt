@@ -1,0 +1,14 @@
+class Solution {
+    static int getlen(Node root,int count){
+        if(root == null)
+        return count;
+        count++;
+        int left = getlen(root.left,count);
+        int right = getlen(root.right,count);
+        return Math.max(left,right);
+    }
+  public static int maxDepth(Node root) {
+     return getlen(root,0);
+
+  }
+}
