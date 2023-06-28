@@ -1,0 +1,10 @@
+class Solution {
+    static int matchGame(Long N) {
+        long val = 0;
+       if(N % 5 == 0)
+       return -1;
+        val = N % 5;
+        return (int) val;
+        
+    }
+}
