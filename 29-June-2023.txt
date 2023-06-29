@@ -1,0 +1,29 @@
+class Solution{
+    
+    static boolean isHappy(int n){
+        if(n == 1 || n == 7)
+        return true;
+       
+        int val = 0;
+        while(n != 0){
+            int rem = n % 10;
+            val = val + (int)Math.pow(rem,2);
+            n = n/10;
+        }
+        if(val != 1 && val != 7 && val < 10)
+        return false;
+       return isHappy(val);
+        
+    }
+    
+    static int nextHappy(int N){
+        if(N == 2)
+        return 7;
+        for(int i = N+1;i < Math.pow(N,2);i++){
+            
+            if(isHappy(i))
+            return i;
+        }
+        return N;
+    }
+}
