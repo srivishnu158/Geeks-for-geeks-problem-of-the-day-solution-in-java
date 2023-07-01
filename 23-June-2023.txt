@@ -1,0 +1,24 @@
+class Solution {
+    static int leastInterval(int N, int K, char tasks[]) {
+        int k = K,n=N;
+          if (k == 0)
+        return n;
+    
+    int[] arr = new int[26];
+    for (int i = 0; i < n; i++) {
+        arr[tasks[i]-'A']++;
+    }
+    
+    Arrays.sort(arr);
+    int chunk = arr[25] - 1;
+    int idlespot = (chunk ) * k;
+    
+    for (int i = 24; i >= 0 ; i--) {
+        idlespot -= Math.min(chunk, arr[i]);
+    }
+    if (idlespot < 0)
+        return n;
+    
+    return idlespot + n;
+    }
+}
