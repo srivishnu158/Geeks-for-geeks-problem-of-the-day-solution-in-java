@@ -1,0 +1,15 @@
+class Solution{
+    static int setSetBit(int x, int y, int l, int r){
+        int count=0;
+        int value = 0;
+      while(y != 0 && count < r){
+          int rem = y % 2;
+          if(count >= l-1 && count < r && rem == 1){
+              value += (int)Math.pow(2,count);
+          }
+          y = y /2; 
+          count++;
+        }
+        return(x | value);
+      }
+}
