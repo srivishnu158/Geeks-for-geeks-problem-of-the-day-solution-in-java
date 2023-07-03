@@ -22,3 +22,26 @@ class Solution {
         return len;
     }
 }
+
+/* Explaination
+
+Let's say we have an array arr[]: {34, 8, 10, 3, 2, 80, 30, 33, 1}
+->We need to find the two elements such that the left one is less than the right. We can have many but we need to find whose distance between both is maximum and need to return distance or difference.
+->In the above example 34, 80 dist = 5-0 = 5
+->8, 80 dist = 5-1 = 4
+->8,30 dist = 6-1 = 5
+->8,33 dist = 7 -1 = 6
+we have more but 8,33 is giving the max difference ie.,6. Thus and = 6.
+->Here we need two elements to be as far as possible, One to the extreme left and one to the extreme right in order to get the max difference.
+->Let us compare 8 with 80,30 and 33. Although all are greater than 8 we tend to choose 33 as it is having higher index or towards left.
+->We can also observe that if any number is greater and also has a higher index it is preferred in all cases.
+->Consider 30,33 at index 6,7. Every number which is less than 30 is also less than 33 and 33 is having higher index thus in every case 33 is preferred.
+->Thus we can make an array max[] where we replace every element on the left with a greater element on the right. Now max[] becomes{80,80,80,80,80,80,33,33,1}.
+->Now consider every element in arr[] and compare it with the element in the max[] at the same index.
+->If arr[i] <= max[j](i=0,j=0) we need to find the difference, so traverse until its original index.
+->Consider arr[1] and max[1]. 34 < 80. Now travel until the original index of 80 in max[], ie..,5.
+->Now we got its difference. The next element in max[] is 33, which is not satisfying arr[i] < max[j] as 34 < 33. So compare it with the next number by i++.
+->Now 8 < 33 so increase j until its original index ie..,7. Now compare the previous difference, which is 5 with the current one which is 7. Consider the max().
+->Continue this until the end and return the difference.
+
+*/
